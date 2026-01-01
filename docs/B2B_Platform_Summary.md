@@ -29,7 +29,6 @@ A platform where B2B suppliers can create professional digital profile pages to 
 ### 3. Profile Management Dashboard
 - Edit profile information
 - Manage products (add/edit/delete)
-- View received reviews
 - Manage subscription
 - Share profile link (subscribers only)
 

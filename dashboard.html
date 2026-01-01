@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bidsfy</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo">
+                <img src="bidsfy.png" alt="Bidsfy" class="logo-img">
+                <span class="logo-text">Bidsfy</span>
+            </a>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-user-edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-boxes"></i>
+                        <span>Products</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-crown"></i>
+                        <span>Subscription</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="demo-profile.html" class="view-profile-btn" target="_blank">
+                <i class="fas fa-external-link-alt"></i>
+                <span>View Public Profile</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <span>Dashboard</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-actions">
+                    <!-- Business Status -->
+                    <div class="business-status" id="businessStatus">
+                        <span class="status-dot open"></span>
+                        <span class="status-text">Open Now</span>
+                    </div>
+                    <!-- Notifications -->
+                    <button class="header-btn notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <!-- Share Button -->
+                    <button class="header-btn share-btn" id="shareProfileBtn">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                </div>
+                <!-- Profile Dropdown -->
+                <div class="profile-dropdown">
+                    <button class="profile-trigger" id="profileTrigger">
+                        <img src="https://ui-avatars.com/api/?name=Al+Ahmed&background=3b5bdb&color=fff&size=40" alt="Profile">
+                        <span class="profile-name">Al Ahmed Trading</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-menu" id="profileMenu">
+                        <a href="demo-profile.html" class="dropdown-item">
+                            <i class="fas fa-user"></i>
+                            View Profile
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                        <hr>
+                        <a href="index.html" class="dropdown-item logout">
+                            <i class="fas fa-sign-out-alt"></i>
+                            Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <main class="dashboard-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-text">
+                    <h1>Welcome back, Al Ahmed Trading! 👋</h1>
+                    <p>Here's what's happening with your profile today.</p>
+                </div>
+                <div class="welcome-actions">
+                    <button class="btn btn-primary" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        Share Profile
+                    </button>
+                    <a href="demo-profile.html" class="btn btn-outline" target="_blank">
+                        <i class="fas fa-eye"></i>
+                        Preview Profile
+                    </a>
+                </div>
+            </section>
+
+            <!-- Subscription Banner (for non-subscribed users) -->
+            <div class="subscription-banner" id="subscriptionBanner">
+                <div class="banner-content">
+                    <div class="banner-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="banner-text">
+                        <h3>Upgrade to Premium</h3>
+                        <p>Your profile is not visible to the public. Subscribe to share your profile link!</p>
+                    </div>
+                </div>
+                <button class="btn btn-white">
+                    <i class="fas fa-rocket"></i>
+                    Subscribe Now
+                </button>
+                <button class="banner-close" id="bannerClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Stats Cards -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <!-- Profile Views -->
+                    <div class="stat-card">
+                        <div class="stat-icon views">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" data-count="2847">0</span>
+                            <span class="stat-label">Profile Views</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>12.5%</span>
+                        </div>
+                    </div>
+                    <!-- Products Viewed -->
+                    <div class="stat-card">
+                        <div class="stat-icon products">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" data-count="1253">0</span>
+                            <span class="stat-label">Products Viewed</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>8.3%</span>
+                        </div>
+                    </div>
+                    <!-- Contact Clicks -->
+                    <div class="stat-card">
+                        <div class="stat-icon contacts">
+                            <i class="fas fa-address-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" data-count="342">0</span>
+                            <span class="stat-label">Contact Clicks</span>
+                        </div>
+                        <div class="stat-trend up">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>15.2%</span>
+                        </div>
+                    </div>
+                    <!-- Social Clicks -->
+                    <div class="stat-card">
+                        <div class="stat-icon social">
+                            <i class="fas fa-share-nodes"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" data-count="156">0</span>
+                            <span class="stat-label">Social Clicks</span>
+                        </div>
+                        <div class="stat-trend down">
+                            <i class="fas fa-arrow-down"></i>
+                            <span>3.1%</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Breakdown -->
+            <section class="contact-breakdown">
+                <div class="section-header">
+                    <h2><i class="fas fa-phone-alt"></i> Contact Breakdown</h2>
+                </div>
+                <div class="breakdown-grid">
+                    <div class="breakdown-item">
+                        <div class="breakdown-icon email">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="breakdown-info">
+                            <span class="breakdown-value">124</span>
+                            <span class="breakdown-label">Email Clicks</span>
+                        </div>
+                        <div class="breakdown-bar">
+                            <div class="bar-fill" style="width: 36%;"></div>
+                        </div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-icon phone">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="breakdown-info">
+                            <span class="breakdown-value">89</span>
+                            <span class="breakdown-label">Phone Clicks</span>
+                        </div>
+                        <div class="breakdown-bar">
+                            <div class="bar-fill" style="width: 26%;"></div>
+                        </div>
+                    </div>
+                    <div class="breakdown-item">
+                        <div class="breakdown-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="breakdown-info">
+                            <span class="breakdown-value">129</span>
+                            <span class="breakdown-label">WhatsApp Clicks</span>
+                        </div>
+                        <div class="breakdown-bar">
+                            <div class="bar-fill" style="width: 38%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="chart-card main-chart">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-area"></i> Profile Views</h2>
+                        <div class="chart-tabs">
+                            <button class="chart-tab active" data-period="daily">Daily</button>
+                            <button class="chart-tab" data-period="weekly">Weekly</button>
+                            <button class="chart-tab" data-period="monthly">Monthly</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="viewsChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Two Column Section -->
+            <section class="two-column-section">
+                <!-- Top Products -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-fire"></i> Top Viewed Products</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="top-products-list">
+                            <div class="top-product-item">
+                                <span class="rank">1</span>
+                                <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=60&h=60&fit=crop" alt="Product">
+                                <div class="product-info">
+                                    <h4>Portland Cement OPC 53</h4>
+                                    <span class="product-views"><i class="fas fa-eye"></i> 487 views</span>
+                                </div>
+                                <div class="product-trend up">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="top-product-item">
+                                <span class="rank">2</span>
+                                <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=60&h=60&fit=crop" alt="Product">
+                                <div class="product-info">
+                                    <h4>TMT Steel Bars</h4>
+                                    <span class="product-views"><i class="fas fa-eye"></i> 356 views</span>
+                                </div>
+                                <div class="product-trend up">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="top-product-item">
+                                <span class="rank">3</span>
+                                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=60&h=60&fit=crop" alt="Product">
+                                <div class="product-info">
+                                    <h4>Premium Ceramic Tiles</h4>
+                                    <span class="product-views"><i class="fas fa-eye"></i> 298 views</span>
+                                </div>
+                                <div class="product-trend down">
+                                    <i class="fas fa-arrow-down"></i>
+                                </div>
+                            </div>
+                            <div class="top-product-item">
+                                <span class="rank">4</span>
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=60&h=60&fit=crop" alt="Product">
+                                <div class="product-info">
+                                    <h4>Ready Mix Concrete</h4>
+                                    <span class="product-views"><i class="fas fa-eye"></i> 245 views</span>
+                                </div>
+                                <div class="product-trend up">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="top-product-item">
+                                <span class="rank">5</span>
+                                <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=60&h=60&fit=crop" alt="Product">
+                                <div class="product-info">
+                                    <h4>Weather Shield Paint</h4>
+                                    <span class="product-views"><i class="fas fa-eye"></i> 201 views</span>
+                                </div>
+                                <div class="product-trend up">
+                                    <i class="fas fa-arrow-up"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Links Performance -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-hashtag"></i> Social Links Performance</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="social-performance">
+                            <div class="social-item">
+                                <div class="social-icon facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </div>
+                                <div class="social-info">
+                                    <span class="social-name">Facebook</span>
+                                    <span class="social-clicks">48 clicks</span>
+                                </div>
+                                <div class="social-bar">
+                                    <div class="bar-fill" style="width: 31%;"></div>
+                                </div>
+                            </div>
+                            <div class="social-item">
+                                <div class="social-icon instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="social-info">
+                                    <span class="social-name">Instagram</span>
+                                    <span class="social-clicks">62 clicks</span>
+                                </div>
+                                <div class="social-bar">
+                                    <div class="bar-fill" style="width: 40%;"></div>
+                                </div>
+                            </div>
+                            <div class="social-item">
+                                <div class="social-icon linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
+                                <div class="social-info">
+                                    <span class="social-name">LinkedIn</span>
+                                    <span class="social-clicks">31 clicks</span>
+                                </div>
+                                <div class="social-bar">
+                                    <div class="bar-fill" style="width: 20%;"></div>
+                                </div>
+                            </div>
+                            <div class="social-item">
+                                <div class="social-icon twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </div>
+                                <div class="social-info">
+                                    <span class="social-name">Twitter</span>
+                                    <span class="social-clicks">15 clicks</span>
+                                </div>
+                                <div class="social-bar">
+                                    <div class="bar-fill" style="width: 9%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products Section -->
+            <section class="featured-section">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-star"></i> Featured Products</h2>
+                        <span class="featured-count">3 of 5 selected</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="featured-desc">Select up to 5 products to feature at the top of your profile. Featured products get 3x more views!</p>
+                        <div class="featured-products-grid">
+                            <div class="featured-product-card selected">
+                                <div class="featured-checkbox">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=150&h=120&fit=crop" alt="Product">
+                                <div class="featured-info">
+                                    <h4>Portland Cement OPC 53</h4>
+                                    <span class="featured-price">AED 18.50 / bag</span>
+                                </div>
+                            </div>
+                            <div class="featured-product-card selected">
+                                <div class="featured-checkbox">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=150&h=120&fit=crop" alt="Product">
+                                <div class="featured-info">
+                                    <h4>TMT Steel Bars</h4>
+                                    <span class="featured-price">AED 2,450 / ton</span>
+                                </div>
+                            </div>
+                            <div class="featured-product-card selected">
+                                <div class="featured-checkbox">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=150&h=120&fit=crop" alt="Product">
+                                <div class="featured-info">
+                                    <h4>Premium Ceramic Tiles</h4>
+                                    <span class="featured-price">AED 45 / sqm</span>
+                                </div>
+                            </div>
+                            <div class="featured-product-card">
+                                <div class="featured-checkbox">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=150&h=120&fit=crop" alt="Product">
+                                <div class="featured-info">
+                                    <h4>Weather Shield Paint</h4>
+                                    <span class="featured-price">AED 185 / bucket</span>
+                                </div>
+                            </div>
+                            <div class="featured-product-card">
+                                <div class="featured-checkbox">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=150&h=120&fit=crop" alt="Product">
+                                <div class="featured-info">
+                                    <h4>Ready Mix Concrete</h4>
+                                    <span class="featured-price">AED 320 / m³</span>
+                                </div>
+                            </div>
+                            <div class="featured-product-card add-new">
+                                <div class="add-new-content">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>Add New Product</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bolt"></i> Quick Actions</h2>
+                </div>
+                <div class="quick-actions-grid">
+                    <a href="#" class="quick-action-card">
+                        <div class="action-icon edit">
+                            <i class="fas fa-pen"></i>
+                        </div>
+                        <span>Edit Profile</span>
+                    </a>
+                    <a href="#" class="quick-action-card">
+                        <div class="action-icon products">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <span>Add Product</span>
+                    </a>
+                    <a href="#" class="quick-action-card">
+                        <div class="action-icon subscription">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <span>Manage Plan</span>
+                    </a>
+                    <a href="#" class="quick-action-card">
+                        <div class="action-icon settings">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Business Hours Card -->
+            <section class="business-hours-section">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-clock"></i> Business Hours</h2>
+                        <a href="#" class="edit-link"><i class="fas fa-pen"></i> Edit</a>
+                    </div>
+                    <div class="card-body">
+                        <div class="current-status" id="currentStatus">
+                            <div class="status-indicator open">
+                                <span class="status-dot"></span>
+                                <span class="status-text">Open Now</span>
+                            </div>
+                            <span class="next-change">Closes at 6:00 PM</span>
+                        </div>
+                        <div class="hours-list">
+                            <div class="hours-row">
+                                <span class="day">Saturday</span>
+                                <span class="time">8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Sunday</span>
+                                <span class="time">8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Monday</span>
+                                <span class="time">8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Tuesday</span>
+                                <span class="time">8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Wednesday</span>
+                                <span class="time">8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span class="day">Thursday</span>
+                                <span class="time">8:00 AM - 6:00 PM</span>
+                            </div>
+                            <div class="hours-row closed">
+                                <span class="day">Friday</span>
+                                <span class="time">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <div class="modal-header">
+                <i class="fas fa-share-alt"></i>
+                <h3>Share Your Profile</h3>
+            </div>
+            <div class="modal-body">
+                <div class="share-link-box">
+                    <input type="text" value="https://bidsfy.com/profile/al-ahmed-trading" readonly id="shareLink">
+                    <button class="copy-btn" id="copyBtn">
+                        <i class="fas fa-copy"></i>
+                        Copy
+                    </button>
+                </div>
+                <div class="share-options">
+                    <a href="#" class="share-option whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                    <a href="#" class="share-option email">
+                        <i class="fas fa-envelope"></i>
+                        Email
+                    </a>
+                    <a href="#" class="share-option linkedin">
+                        <i class="fab fa-linkedin-in"></i>
+                        LinkedIn
+                    </a>
+                    <a href="#" class="share-option twitter">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </a>
+                </div>
+                <div class="qr-code">
+                    <p>Or scan QR code:</p>
+                    <div class="qr-placeholder">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
