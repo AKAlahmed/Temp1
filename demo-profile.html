@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Ahmed Trading - Bidsfy Profile</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="theme-blue layout-modern">
+    <!-- Magic Style Button -->
+    <button class="magic-btn" id="magicBtn" title="Change Style">
+        <i class="fas fa-magic"></i>
+    </button>
+
+    <!-- Style Panel -->
+    <div class="style-panel" id="stylePanel">
+        <div class="style-panel-header">
+            <h3><i class="fas fa-palette"></i> Customize Style</h3>
+            <button class="close-panel" id="closePanel"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="style-panel-content">
+            <!-- Color Themes -->
+            <div class="style-section">
+                <h4>Color Theme</h4>
+                <div class="color-options">
+                    <button class="color-option active" data-theme="blue" title="Blue">
+                        <span style="background: linear-gradient(135deg, #3b5bdb, #4f6ef7);"></span>
+                    </button>
+                    <button class="color-option" data-theme="purple" title="Purple">
+                        <span style="background: linear-gradient(135deg, #7c3aed, #a78bfa);"></span>
+                    </button>
+                    <button class="color-option" data-theme="green" title="Green">
+                        <span style="background: linear-gradient(135deg, #059669, #34d399);"></span>
+                    </button>
+                    <button class="color-option" data-theme="orange" title="Orange">
+                        <span style="background: linear-gradient(135deg, #ea580c, #fb923c);"></span>
+                    </button>
+                    <button class="color-option" data-theme="red" title="Red">
+                        <span style="background: linear-gradient(135deg, #dc2626, #f87171);"></span>
+                    </button>
+                    <button class="color-option" data-theme="teal" title="Teal">
+                        <span style="background: linear-gradient(135deg, #0d9488, #5eead4);"></span>
+                    </button>
+                </div>
+            </div>
+            <!-- Layout Options -->
+            <div class="style-section">
+                <h4>Layout Style</h4>
+                <div class="layout-options">
+                    <button class="layout-option active" data-layout="modern">
+                        <div class="layout-preview modern-preview">
+                            <div class="lp-header"></div>
+                            <div class="lp-content">
+                                <div class="lp-card"></div>
+                                <div class="lp-card"></div>
+                            </div>
+                        </div>
+                        <span>Modern</span>
+                    </button>
+                    <button class="layout-option" data-layout="classic">
+                        <div class="layout-preview classic-preview">
+                            <div class="lp-sidebar"></div>
+                            <div class="lp-main"></div>
+                        </div>
+                        <span>Classic</span>
+                    </button>
+                    <button class="layout-option" data-layout="minimal">
+                        <div class="layout-preview minimal-preview">
+                            <div class="lp-line"></div>
+                            <div class="lp-line short"></div>
+                            <div class="lp-box"></div>
+                        </div>
+                        <span>Minimal</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="panel-overlay" id="panelOverlay"></div>
+
+    <!-- Profile Header -->
+    <header class="profile-header">
+        <div class="cover-image">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=400&fit=crop" alt="Cover">
+            <div class="cover-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="profile-info">
+                <div class="profile-logo">
+                    <img src="https://ui-avatars.com/api/?name=Al+Ahmed&background=3b5bdb&color=fff&size=120&font-size=0.4&bold=true" alt="Al Ahmed Trading Logo">
+                </div>
+                <div class="profile-details">
+                    <h1 class="business-name">Al Ahmed Trading Company</h1>
+                    <p class="tagline">Premium Building Materials & Construction Supplies Since 1995</p>
+                    <div class="profile-meta">
+                        <span class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Dubai, UAE
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-industry"></i>
+                            Construction & Building Materials
+                        </span>
+                        <span class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            Est. 1995
+                        </span>
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i>
+                        Contact Us
+                    </a>
+                    <button class="btn btn-outline share-btn" id="shareBtn">
+                        <i class="fas fa-share-alt"></i>
+                        Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="profile-nav">
+        <div class="container">
+            <div class="nav-tabs">
+                <button class="tab-btn active" data-tab="about">
+                    <i class="fas fa-building"></i>
+                    <span>About Us</span>
+                </button>
+                <button class="tab-btn" data-tab="products">
+                    <i class="fas fa-boxes"></i>
+                    <span>Products</span>
+                </button>
+                <button class="tab-btn" data-tab="contact">
+                    <i class="fas fa-address-card"></i>
+                    <span>Contact</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="profile-content">
+        <div class="container">
+            <!-- About Section -->
+            <section class="tab-content active" id="about">
+                <div class="content-grid">
+                    <div class="main-content">
+                        <!-- About Card -->
+                        <div class="content-card">
+                            <div class="card-header">
+                                <h2><i class="fas fa-info-circle"></i> About Our Company</h2>
+                            </div>
+                            <div class="card-body">
+                                <p>Al Ahmed Trading Company is a leading supplier of premium building materials and construction supplies in the UAE and GCC region. With over 28 years of experience, we have established ourselves as a trusted partner for contractors, builders, and developers.</p>
+                                <p>Our commitment to quality, competitive pricing, and exceptional customer service has made us the preferred choice for construction projects of all sizes. From small residential builds to large commercial developments, we provide the materials that build tomorrow's landmarks.</p>
+                                <p>We work directly with manufacturers worldwide to bring you the best products at competitive prices. Our extensive warehouse facilities ensure quick delivery and consistent availability of stock.</p>
+                            </div>
+                        </div>
+
+                        <!-- Mission & Vision -->
+                        <div class="content-card">
+                            <div class="card-header">
+                                <h2><i class="fas fa-bullseye"></i> Mission & Vision</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="mission-vision-grid">
+                                    <div class="mv-item">
+                                        <div class="mv-icon">
+                                            <i class="fas fa-rocket"></i>
+                                        </div>
+                                        <h3>Our Mission</h3>
+                                        <p>To provide high-quality building materials that meet international standards while ensuring competitive pricing and excellent customer service.</p>
+                                    </div>
+                                    <div class="mv-item">
+                                        <div class="mv-icon">
+                                            <i class="fas fa-eye"></i>
+                                        </div>
+                                        <h3>Our Vision</h3>
+                                        <p>To be the most trusted and preferred supplier of construction materials in the Middle East region.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="side-content">
+                        <!-- Quick Stats -->
+                        <div class="content-card stats-card">
+                            <div class="card-header">
+                                <h2><i class="fas fa-chart-bar"></i> Quick Facts</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="stats-grid">
+                                    <div class="stat-item">
+                                        <span class="stat-number">28+</span>
+                                        <span class="stat-label">Years Experience</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">500+</span>
+                                        <span class="stat-label">Products</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">1000+</span>
+                                        <span class="stat-label">Happy Clients</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-number">50+</span>
+                                        <span class="stat-label">Brands</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certifications -->
+                        <div class="content-card">
+                            <div class="card-header">
+                                <h2><i class="fas fa-award"></i> Certifications</h2>
+                            </div>
+                            <div class="card-body">
+                                <ul class="certification-list">
+                                    <li>
+                                        <i class="fas fa-certificate"></i>
+                                        <span>ISO 9001:2015 Certified</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-certificate"></i>
+                                        <span>Dubai Chamber Member</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-certificate"></i>
+                                        <span>UAE Quality Mark</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-certificate"></i>
+                                        <span>Green Building Certified Supplier</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Section -->
+            <section class="tab-content" id="products">
+                <div class="products-header">
+                    <h2><i class="fas fa-boxes"></i> Our Products</h2>
+                    <div class="products-filter">
+                        <button class="filter-btn active" data-category="all">All</button>
+                        <button class="filter-btn" data-category="cement">Cement</button>
+                        <button class="filter-btn" data-category="steel">Steel</button>
+                        <button class="filter-btn" data-category="tiles">Tiles</button>
+                        <button class="filter-btn" data-category="paint">Paint</button>
+                    </div>
+                </div>
+                <div class="products-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card" data-category="cement">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=400&h=300&fit=crop" alt="Portland Cement">
+                            <span class="product-badge">Best Seller</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Portland Cement OPC 53</h3>
+                            <p class="product-desc">High-grade ordinary portland cement for construction</p>
+                            <div class="product-price">
+                                <span class="price">AED 18.50</span>
+                                <span class="unit">/ bag (50kg)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 2 -->
+                    <div class="product-card" data-category="steel">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180?w=400&h=300&fit=crop" alt="Steel Bars">
+                        </div>
+                        <div class="product-info">
+                            <h3>TMT Steel Bars</h3>
+                            <p class="product-desc">High-strength thermo mechanically treated steel bars</p>
+                            <div class="product-price">
+                                <span class="price">AED 2,450</span>
+                                <span class="unit">/ ton</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 3 -->
+                    <div class="product-card" data-category="tiles">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&h=300&fit=crop" alt="Ceramic Tiles">
+                            <span class="product-badge new">New</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Premium Ceramic Tiles</h3>
+                            <p class="product-desc">Italian design ceramic floor tiles 60x60cm</p>
+                            <div class="product-price">
+                                <span class="price">AED 45</span>
+                                <span class="unit">/ sqm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 4 -->
+                    <div class="product-card" data-category="paint">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop" alt="Exterior Paint">
+                        </div>
+                        <div class="product-info">
+                            <h3>Weather Shield Paint</h3>
+                            <p class="product-desc">Premium exterior weather-resistant paint</p>
+                            <div class="product-price">
+                                <span class="price">AED 185</span>
+                                <span class="unit">/ 20L bucket</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 5 -->
+                    <div class="product-card" data-category="cement">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&h=300&fit=crop" alt="Ready Mix Concrete">
+                        </div>
+                        <div class="product-info">
+                            <h3>Ready Mix Concrete</h3>
+                            <p class="product-desc">Grade M25 ready mix concrete for structural work</p>
+                            <div class="product-price">
+                                <span class="price">AED 320</span>
+                                <span class="unit">/ cubic meter</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 6 -->
+                    <div class="product-card" data-category="steel">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Steel Mesh">
+                        </div>
+                        <div class="product-info">
+                            <h3>Welded Wire Mesh</h3>
+                            <p class="product-desc">Galvanized welded wire mesh for reinforcement</p>
+                            <div class="product-price">
+                                <span class="price">AED 95</span>
+                                <span class="unit">/ sheet</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 7 -->
+                    <div class="product-card" data-category="tiles">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1615971677499-5467cbab01c0?w=400&h=300&fit=crop" alt="Porcelain Tiles">
+                        </div>
+                        <div class="product-info">
+                            <h3>Porcelain Floor Tiles</h3>
+                            <p class="product-desc">Spanish porcelain tiles with marble finish</p>
+                            <div class="product-price">
+                                <span class="price">AED 75</span>
+                                <span class="unit">/ sqm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product 8 -->
+                    <div class="product-card" data-category="paint">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=300&fit=crop" alt="Interior Paint">
+                        </div>
+                        <div class="product-info">
+                            <h3>Premium Interior Emulsion</h3>
+                            <p class="product-desc">Low VOC interior wall paint with silk finish</p>
+                            <div class="product-price">
+                                <span class="price">AED 145</span>
+                                <span class="unit">/ 20L bucket</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="tab-content" id="contact">
+                <div class="contact-grid">
+                    <div class="contact-info-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-address-card"></i> Contact Information</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="contact-list">
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Email</span>
+                                        <a href="mailto:info@alahmedtrading.com">info@alahmedtrading.com</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Phone</span>
+                                        <a href="tel:+97142345678">+971 4 234 5678</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">WhatsApp</span>
+                                        <a href="https://wa.me/971501234567" target="_blank">+971 50 123 4567</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Website</span>
+                                        <a href="#" target="_blank">www.alahmedtrading.com</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-details">
+                                        <span class="contact-label">Address</span>
+                                        <span>Warehouse 15, Al Quoz Industrial Area 3<br>Dubai, United Arab Emirates</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="working-hours-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-clock"></i> Working Hours</h2>
+                        </div>
+                        <div class="card-body">
+                            <ul class="hours-list">
+                                <li>
+                                    <span class="day">Saturday - Thursday</span>
+                                    <span class="hours">8:00 AM - 6:00 PM</span>
+                                </li>
+                                <li>
+                                    <span class="day">Friday</span>
+                                    <span class="hours closed">Closed</span>
+                                </li>
+                            </ul>
+                            <div class="quick-actions">
+                                <a href="https://wa.me/971501234567" class="action-btn whatsapp">
+                                    <i class="fab fa-whatsapp"></i>
+                                    Chat on WhatsApp
+                                </a>
+                                <a href="tel:+97142345678" class="action-btn call">
+                                    <i class="fas fa-phone"></i>
+                                    Call Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-share-alt"></i> Follow Us</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="social-links">
+                                <a href="#" class="social-link facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="social-link instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="social-link linkedin">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-map"></i> Location</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="map-placeholder">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.178509388856!2d55.24272531501185!3d25.19719798389827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43348a67e24b%3A0xff45e502e1ceb7e2!2sAl%20Quoz%20Industrial%20Area%203!5e0!3m2!1sen!2sae!4v1647800000000!5m2!1sen!2sae" 
+                                    width="100%" 
+                                    height="250" 
+                                    style="border:0; border-radius: 12px;" 
+                                    allowfullscreen="" 
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="profile-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Profile powered by <a href="index.html"><strong>Bidsfy</strong></a></p>
+                <p class="footer-link">
+                    <a href="index.html">Create your own business profile</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Share Modal -->
+    <div class="share-modal" id="shareModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+            <h3><i class="fas fa-share-alt"></i> Share This Profile</h3>
+            <div class="share-link-box">
+                <input type="text" value="https://bidsfy.com/profile/al-ahmed-trading" readonly id="shareLink">
+                <button class="copy-btn" id="copyBtn">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            <div class="share-options">
+                <a href="#" class="share-option whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+                <a href="#" class="share-option email">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+                <a href="#" class="share-option linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    LinkedIn
+                </a>
+                <a href="#" class="share-option twitter">
+                    <i class="fab fa-twitter"></i>
+                    Twitter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>
